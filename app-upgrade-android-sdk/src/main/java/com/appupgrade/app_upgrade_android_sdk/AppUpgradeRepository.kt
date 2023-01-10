@@ -42,7 +42,7 @@
                 call.enqueue(object : Callback<AppUpgradeResponse> {
                     override fun onFailure(call: Call<AppUpgradeResponse>, t: Throwable) {
                         // Handle the failure
-                        Log.i("App Upgrade: ", t.localizedMessage)
+                        Log.d("App Upgrade: ", t.localizedMessage)
                     }
 
                     override fun onResponse(call: Call<AppUpgradeResponse>, response: Response<AppUpgradeResponse>) {
@@ -50,33 +50,33 @@
                             val appUpgradeResponse = response.body()!!
 
                             if (appUpgradeResponse.found) {
-                                Log.i("App Upgrade: ", "Version found, Update required.");
+                                Log.d("App Upgrade: ", "Version found, Update required.");
                                 if (appUpgradeResponse.forceUpgrade) {
-                                    Log.i("App Upgrade: ", "Force Update required.");
+                                    Log.d("App Upgrade: ", "Force Update required.");
                                     showForceUpgradePopup(parentActivity, appInfo.appId, appUpgradeResponse.message, alertDialogConfig);
                                 } else {
-                                    Log.i(
+                                    Log.d(
                                         "App Upgrade: ",
                                         "Force Update is not required but update is recommended."
                                     );
                                     showUpgradePopup(parentActivity, appInfo.appId, appUpgradeResponse.message, alertDialogConfig);
                                 }
                             } else {
-                                Log.i("App Upgrade: ", "Version not found, Update not required.");
+                                Log.d("App Upgrade: ", "Version not found, Update not required.");
                             }
                         } else {
-                            Log.i("App Upgrade: ", "Request failed with http error code: ${response.code()}")
+                            Log.d("App Upgrade: ", "Request failed with http error code: ${response.code()}")
                         }
                     }
                 })
             } catch (e: Exception) {
-                Log.i("App Upgrade: ", e.localizedMessage)
+                Log.d("App Upgrade: ", e.localizedMessage)
             }
 
         }
 
         fun showForceUpgradePopup(parentActivity: Activity, appId: String, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
-            Log.i("App Upgrade: ", "Show force upgrade popup.")
+            Log.d("App Upgrade: ", "Show force upgrade popup.")
 
             Thread {
                 parentActivity.runOnUiThread {
@@ -109,7 +109,7 @@
         }
 
         fun showUpgradePopup(parentActivity: Activity, appId: String, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
-            Log.i("App Upgrade: ", "Show upgrade popup.")
+            Log.d("App Upgrade: ", "Show upgrade popup.")
 
             Thread {
                 parentActivity.runOnUiThread {
@@ -152,11 +152,11 @@
         }
 
         private fun onUserLater() {
-            Log.i("App Upgrade: ", "Later.")
+            Log.d("App Upgrade: ", "Later.")
         }
 
         private fun onUserUpdate(parentActivity: Activity, appId: String) {
-            Log.i("App Upgrade: ", "Update Now.")
+            Log.d("App Upgrade: ", "Update Now.")
             try {
                 parentActivity.startActivity(
                     Intent(

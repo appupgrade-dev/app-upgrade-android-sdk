@@ -11,7 +11,7 @@ class AppUpgrade {
     }
 
     @JvmOverloads fun checkForUpdates(parentActivity: Activity, xApiKey: String, appInfo: AppInfo, alertDialogConfig: AlertDialogConfig?=null) {
-        Log.i("App Upgrade: ", "Checking for updates")
+        Log.d("App Upgrade: ", "Checking for updates")
         appUpgradeRepository.checkForUpdates(parentActivity, xApiKey, appInfo, alertDialogConfig)
     }
 }
