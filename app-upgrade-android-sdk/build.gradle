@@ -62,7 +62,7 @@ afterEvaluate {
 
                 groupId = 'com.appupgrade.appupgrade-android-sdk'
                 artifactId = 'appupgrade-android-sdk'
-                version = '0.1.0'
+                version = '1.0.0'
             }
         }
     }
