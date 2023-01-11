@@ -114,8 +114,8 @@ appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig);
 ```
 
 ### Note:
-2. For opening the app store or play store the app should be live.
-3. It might not be able to open the app store or play store in simulator. You can try it in physical device.
+1. For opening the app store or play store the app should be live.
+2. It might not be able to open the app store or play store in simulator. You can try it in physical device.
 
 
 ## Screenshot
