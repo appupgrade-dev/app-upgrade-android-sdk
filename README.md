@@ -69,48 +69,70 @@ dependencies {
 Add the following code in your MainActivity.kt -> onCreate method.
 
 ```kotlin
-val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
+class MainActivity : AppCompatActivity() {
 
-val appInfo = AppInfo(
-    appId = "com.android.com",
-    appName = "Wallpaper app",
-    appVersion = "1.0.0",
-    platform = "android",
-    environment = "production"
-)
+    private lateinit var appUpgrade: AppUpgrade
 
-//Optional
-val alertDialogConfig = AlertDialogConfig(
-    title = "Update Required", //Default: Please Update
-    updateButtonTitle = "Update Now", //Default: Update Now
-    laterButtonTitle = "Not Now" //Default: Later
-)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-val appUpgrade = AppUpgrade()
-appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig)
+        val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
+
+        val appInfo = AppInfo(
+            appId = "com.android.com",
+            appName = "Wallpaper app",
+            appVersion = "1.0.0",
+            platform = "android",
+            environment = "production"
+        )
+        
+        //Optional
+        val alertDialogConfig = AlertDialogConfig(
+            title = "Update Required", //Default: Please Update
+            updateButtonTitle = "Update Now", //Default: Update Now
+            laterButtonTitle = "Not Now" //Default: Later
+        )
+
+        appUpgrade = AppUpgrade()
+        appUpgrade.checkForUpdates(this, xApiKey, appInfom alertDialogConfig)
+        
+        // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
+    }
+}
 ```
 
 #### Java
 Add the following code in your MainActivity.java -> onCreate method.
 ```java
-String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
+public class MainActivity extends AppCompatActivity {
 
-String appId = "com.android.com";
-String appName = "Wallpaper app";
-String appVersion = "1.0.0";
-String platform = "android";
-String environment = "production";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment);
+        String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
 
-String title = "Update Required";
-String updateButtonTitle = "UPDATE";
-String laterButtonTitle = "Not Now";
+        String appId = "com.android.com";
+        String appName = "Wallpaper app";
+        String appVersion = "1.0.0";
+        String platform = "android";
+        String environment = "production";
+        AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment);
 
-AlertDialogConfig alertDialogConfig = new AlertDialogConfig(title, updateButtonTitle, laterButtonTitle);
-
-AppUpgrade appUpgrade = new AppUpgrade();
-appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig);
+        // Optional
+        String title = "Update Required.";
+        String updateButtonTitle = "UPDATE";
+        String laterButtonTitle = "Not Now";
+        AlertDialogConfig alertDialogConfig = new AlertDialogConfig(title, updateButtonTitle, laterButtonTitle);
+        
+        AppUpgrade appUpgrade = new AppUpgrade();
+        appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig);
+        
+        // appUpgrade.checkForUpdates(this, xApiKey, appInfo);
+    }
+}
 ```
 
 ### Note:
