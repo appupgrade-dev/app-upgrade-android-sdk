@@ -56,7 +56,7 @@ dependencies {
 }
 ```
 
-3. Internet Permission required. Add the following in AndroidManifest.xml file.
+3. Internet Permission required. Add the following in AndroidManifest.xml file if not already present.
 ```
 <uses-permission android:name="android.permission.INTERNET" />
 ```
