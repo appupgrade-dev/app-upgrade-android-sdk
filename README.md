@@ -56,6 +56,7 @@ dependencies {
 2. Use the SDK.
 
 #### Kotlin
+Add the following code in your MainActivity.kt
 
 ```kotlin
 val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
@@ -80,6 +81,7 @@ appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig)
 ```
 
 #### Java
+Add the following code in your MainActivity.java
 ```java
 String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
 
