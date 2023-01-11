@@ -46,6 +46,11 @@ dependencies {
 }
 ```
 
+3. Internet Permission required. Add the following in AndroidManifest.xml file.
+```
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
 ## How to use it.
 1. Register on App Upgrade and follow the instructions to create project and get the x-api-key.
 2. Use the SDK.
