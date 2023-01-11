@@ -65,35 +65,35 @@ val appInfo = AppInfo(
 
 //Optional
 val alertDialogConfig = AlertDialogConfig(
-    title: "Update Required", //Default: Please Update
-    updateButtonTitle: "Update Now", //Default: Update Now
-    laterButtonTitle: "Not Now" //Default: Later
+    title = "Update Required", //Default: Please Update
+    updateButtonTitle = "Update Now", //Default: Update Now
+    laterButtonTitle = "Not Now" //Default: Later
 )
 
-appUpgrade = AppUpgrade()
+val appUpgrade = AppUpgrade()
 appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig)
 ```
 
 #### Java
 ```java
-        String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
+String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
 
-        String appId = "com.android.com";
-        String appName = "Wallpaper app";
-        String appVersion = "1.0.0";
-        String platform = "android";
-        String environment = "production";
+String appId = "com.android.com";
+String appName = "Wallpaper app";
+String appVersion = "1.0.0";
+String platform = "android";
+String environment = "production";
 
-        AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment);
+AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment);
 
-        String title = "Update Required";
-        String updateButtonTitle = "UPDATE";
-        String laterButtonTitle = "Not Now";
+String title = "Update Required";
+String updateButtonTitle = "UPDATE";
+String laterButtonTitle = "Not Now";
 
-        AlertDialogConfig alertDialogConfig = new AlertDialogConfig(title, updateButtonTitle, laterButtonTitle);
-        
-        AppUpgrade appUpgrade = new AppUpgrade();
-        appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig);
+AlertDialogConfig alertDialogConfig = new AlertDialogConfig(title, updateButtonTitle, laterButtonTitle);
+
+AppUpgrade appUpgrade = new AppUpgrade();
+appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig);
 ```
 
 ### Note:
