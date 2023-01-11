@@ -29,12 +29,22 @@ dependencyResolutionManagement {
     }
 }
 ```
-If you are using gradel version prior to 7.x.x add the following in your build.gradle at the end of repositories:
+If you are using gradle version prior to 7.x.x add the following in your build.gradle at the end of repositories:
 ```
 allprojects {
     repositories {
         ...
         maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+For build.gradle.kts
+```
+allprojects {
+    repositories {
+        ...
+        maven ("https://jitpack.io")
     }
 }
 ```
@@ -56,7 +66,7 @@ dependencies {
 2. Use the SDK.
 
 #### Kotlin
-Add the following code in your MainActivity.kt
+Add the following code in your MainActivity.kt -> onCreate method.
 
 ```kotlin
 val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
@@ -81,7 +91,7 @@ appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig)
 ```
 
 #### Java
-Add the following code in your MainActivity.java
+Add the following code in your MainActivity.java -> onCreate method.
 ```java
 String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
 
