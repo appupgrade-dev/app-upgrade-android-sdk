@@ -29,7 +29,7 @@ dependencyResolutionManagement {
     }
 }
 ```
-If you are using gradle version prior to 7.x.x add the following in your build.gradle at the end of repositories:
+If you are using gradle version prior to 7.x.x add the following in your root build.gradle at the end of repositories:
 ```
 allprojects {
     repositories {
@@ -39,7 +39,7 @@ allprojects {
 }
 ```
 
-For build.gradle.kts
+For Kotlin build.gradle.kts syntax is:
 ```
 allprojects {
     repositories {
@@ -52,7 +52,7 @@ allprojects {
 2. Add the dependency to your project
 ```groovy
 dependencies {
-  implementation 'com.github.appupgrade-dev:app-upgrade-android-sdk:1.0.1'
+  implementation 'com.github.appupgrade-dev:app-upgrade-android-sdk:1.0.1' //replace with latest version
 }
 ```
 
@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // App Upgrade
         val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
 
         val appInfo = AppInfo(
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             laterButtonTitle = "Not Now" //Default: Later
         )
 
-        appUpgrade = AppUpgrade()
+        val appUpgrade = AppUpgrade()
         appUpgrade.checkForUpdates(this, xApiKey, appInfom alertDialogConfig)
         
         // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // App Upgrade
         String xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5";
 
         String appId = "com.android.com";
