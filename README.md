@@ -4,8 +4,7 @@ Android SDK for [App Upgrade](https://appupgrade.dev)
 
 App Upgrade is a service let your users know when to upgrade your apps or force them to upgrade the app.
 
-[![Twitter](https://img.shields.io/twitter/follow/app_upgrade?style=social)](https://twitter.com/app_upgrade)
-[![YouTube](https://img.shields.io/youtube/channel/subscribers/UC0ZVJPYHFVuMwEsro4VZKXw?style=social)](https://www.youtube.com/channel/UC0ZVJPYHFVuMwEsro4VZKXw)
+[![](https://jitpack.io/v/appupgrade-dev/app-upgrade-android-sdk.svg)](https://jitpack.io/#appupgrade-dev/app-upgrade-android-sdk)
 
 Many times we need to force upgrade mobile apps on users' mobile. Having faced this issue multiple times decided to find a better way to tackle this problem. After doing some research on how people are doing this there are so many custom solutions or checking with the play store or AppStore API if there is a new version available. Although this works if we just want to nudge users that there is a new version available. It doesn't solve the problem where we want to make a decision.. whether it's a soft graceful update or we want to force update. So here is this product that will make developers' life easy. We can set custom messages.. see the versions in beautify dashboard, and many exciting features in the roadmap ahead.
 
