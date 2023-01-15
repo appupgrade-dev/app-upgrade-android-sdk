@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
         String appVersion = "1.0.0";
         String platform = "android";
         String environment = "production";
-        String appLanguage = "es";
+        String appLanguage = "es"; //Nullable
 
-        AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment);
+        AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment, appLanguage);
 
         // Optional
         String title = "Update Required.";
