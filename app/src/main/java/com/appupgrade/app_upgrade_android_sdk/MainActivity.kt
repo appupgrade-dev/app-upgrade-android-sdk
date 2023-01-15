@@ -2,6 +2,7 @@ package com.appupgrade.app_upgrade_android_sdk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.appupgrade.app_upgrade_android_sdk.models.AlertDialogConfig
 import com.appupgrade.app_upgrade_android_sdk.models.AppInfo
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             appVersion = "1.0.0",
             platform = "android",
             environment = "production",
+            appLanguage = "en"
         )
 
         AppUpgrade().checkForUpdates(this, xApiKey, appInfo);

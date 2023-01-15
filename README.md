@@ -42,7 +42,7 @@ allprojects {
 2. Add the dependency to your project
 ```groovy
 dependencies {
-  implementation 'com.github.appupgrade-dev:app-upgrade-android-sdk:1.0.0'
+  implementation 'com.github.appupgrade-dev:app-upgrade-android-sdk:1.0.2'
 }
 ```
 
@@ -61,6 +61,7 @@ val appInfo = AppInfo(
     appVersion = "1.0.0",
     platform = "android",
     environment = "production"
+    appLanguage = "es" // Optional, used for localizing the update message.
 )
 
 //Optional
@@ -83,6 +84,7 @@ appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig)
         String appVersion = "1.0.0";
         String platform = "android";
         String environment = "production";
+        String appLanguage = "es"
 
         AppInfo appInfo = new AppInfo(appId, appName, appVersion, platform, environment);
 

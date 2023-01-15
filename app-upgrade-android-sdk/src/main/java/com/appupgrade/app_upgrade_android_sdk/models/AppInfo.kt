@@ -6,4 +6,5 @@ data class AppInfo(
     val appVersion: String,
     val platform: String,
     val environment: String,
+    val appLanguage: String? = null,
 )

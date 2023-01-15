@@ -37,6 +37,10 @@
                 params["platform"] = appInfo.platform
                 params["environment"] = appInfo.environment
 
+                if (!appInfo.appLanguage.isNullOrEmpty()) {
+                    params["app_language"] = appInfo.appLanguage
+                }
+
                 val call = appUpgradeApi.versionCheck(xApiKey, params)
 
                 call.enqueue(object : Callback<AppUpgradeResponse> {
