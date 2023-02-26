@@ -82,7 +82,7 @@
         fun showForceUpgradePopup(parentActivity: Activity, appId: String, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
             Log.d("App Upgrade: ", "Show force upgrade popup.")
 
-            Thread {
+            if (!parentActivity.isFinishing) {
                 parentActivity.runOnUiThread {
                     val builder = AlertDialog.Builder(parentActivity)
                     builder.setMessage(updateMessage)
@@ -109,13 +109,15 @@
                     alert.setTitle(alertDialogTitle)
                     alert.show()
                 }
-            }.start()
+            } else {
+                Log.d("App Upgrade Err: ", "Parent activity is finished running.")
+            }
         }
 
         fun showUpgradePopup(parentActivity: Activity, appId: String, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
             Log.d("App Upgrade: ", "Show upgrade popup.")
 
-            Thread {
+            if (!parentActivity.isFinishing) {
                 parentActivity.runOnUiThread {
                     val builder = AlertDialog.Builder(parentActivity)
                     builder.setMessage(updateMessage)
@@ -152,7 +154,9 @@
                     alert.setTitle(alertDialogTitle)
                     alert.show()
                 }
-            }.start()
+            } else {
+                Log.d("App Upgrade Err: ", "Parent activity is finished running.")
+            }
         }
 
         private fun onUserLater() {

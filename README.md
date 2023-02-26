@@ -51,7 +51,7 @@ allprojects {
 2. Add the dependency to your project
 ```groovy
 dependencies {
-  implementation 'com.github.appupgrade-dev:app-upgrade-android-sdk:1.0.2'
+  implementation 'com.github.appupgrade-dev:app-upgrade-android-sdk:1.0.3'
 }
 ```
 
