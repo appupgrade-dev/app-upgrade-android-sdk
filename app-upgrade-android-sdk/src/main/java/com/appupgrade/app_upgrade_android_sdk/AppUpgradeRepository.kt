@@ -11,6 +11,7 @@
     import com.appupgrade.app_upgrade_android_sdk.models.AlertDialogConfig
     import com.appupgrade.app_upgrade_android_sdk.models.AppInfo
     import com.appupgrade.app_upgrade_android_sdk.models.AppUpgradeResponse
+    import com.appupgrade.app_upgrade_android_sdk.models.PreferredAndroidMarket
     import retrofit2.Call
     import retrofit2.Callback
     import retrofit2.Response
@@ -57,13 +58,13 @@
                                 Log.d("App Upgrade: ", "Version found, Update required.");
                                 if (appUpgradeResponse.forceUpgrade) {
                                     Log.d("App Upgrade: ", "Force Update required.");
-                                    showForceUpgradePopup(parentActivity, appInfo.appId, appUpgradeResponse.message, alertDialogConfig);
+                                    showForceUpgradePopup(parentActivity, appInfo, appUpgradeResponse.message, alertDialogConfig);
                                 } else {
                                     Log.d(
                                         "App Upgrade: ",
                                         "Force Update is not required but update is recommended."
                                     );
-                                    showUpgradePopup(parentActivity, appInfo.appId, appUpgradeResponse.message, alertDialogConfig);
+                                    showUpgradePopup(parentActivity, appInfo, appUpgradeResponse.message, alertDialogConfig);
                                 }
                             } else {
                                 Log.d("App Upgrade: ", "Version not found, Update not required.");
@@ -79,7 +80,7 @@
 
         }
 
-        fun showForceUpgradePopup(parentActivity: Activity, appId: String, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
+        fun showForceUpgradePopup(parentActivity: Activity, appInfo: AppInfo, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
             Log.d("App Upgrade: ", "Show force upgrade popup.")
 
             if (!parentActivity.isFinishing) {
@@ -99,7 +100,7 @@
 
                     alert.setOnShowListener {
                         val b: Button = alert.getButton(android.app.AlertDialog.BUTTON_POSITIVE)
-                        b.setOnClickListener { onUserUpdate(parentActivity, appId) }
+                        b.setOnClickListener { onUserUpdate(parentActivity, appInfo) }
                     }
 
                     var alertDialogTitle = "Please Update"
@@ -114,7 +115,7 @@
             }
         }
 
-        fun showUpgradePopup(parentActivity: Activity, appId: String, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
+        fun showUpgradePopup(parentActivity: Activity, appInfo: AppInfo, updateMessage: String, alertDialogConfig: AlertDialogConfig?) {
             Log.d("App Upgrade: ", "Show upgrade popup.")
 
             if (!parentActivity.isFinishing) {
@@ -130,7 +131,7 @@
 
                     builder.setPositiveButton(updateButtonTitle,
                         DialogInterface.OnClickListener { dialog: DialogInterface, which: Int ->
-                            onUserUpdate(parentActivity, appId)
+                            onUserUpdate(parentActivity, appInfo)
                             // If user click Later then dialog box is canceled.
                             dialog.cancel()
                         } as DialogInterface.OnClickListener)
@@ -163,20 +164,50 @@
             Log.d("App Upgrade: ", "Later.")
         }
 
-        private fun onUserUpdate(parentActivity: Activity, appId: String) {
+        private fun onUserUpdate(parentActivity: Activity, appInfo: AppInfo) {
             Log.d("App Upgrade: ", "Update Now.")
             try {
-                parentActivity.startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=$appId")
+                if (appInfo.preferredAndroidMarket === PreferredAndroidMarket.GOOGLE) {
+                    parentActivity.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=${appInfo.appId}")
+                        )
                     )
-                )
+                } else if (appInfo.preferredAndroidMarket === PreferredAndroidMarket.HUAWEI) {
+                    parentActivity.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("appmarket://details?id=${appInfo.appId}")
+                        )
+                    )
+                } else if (appInfo.preferredAndroidMarket === PreferredAndroidMarket.AMAZON) {
+                    parentActivity.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://www.amazon.com/gp/mas/dl/android?p=${appInfo.appId}")
+                        )
+                    )
+                } else if (appInfo.preferredAndroidMarket === PreferredAndroidMarket.OTHER && appInfo.otherAndroidMarketUrl !== null) {
+                    parentActivity.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(appInfo.otherAndroidMarketUrl)
+                        )
+                    )
+                } else {
+                    parentActivity.startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=$appInfo.appId")
+                        )
+                    )
+                }
             } catch (anfe: ActivityNotFoundException) {
                 parentActivity.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=$appId")
+                        Uri.parse("https://play.google.com/store/apps/details?id=$appInfo.appId")
                     )
                 )
             }

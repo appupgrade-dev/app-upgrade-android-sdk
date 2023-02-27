@@ -7,4 +7,6 @@ data class AppInfo(
     val platform: String,
     val environment: String,
     val appLanguage: String? = null,
+    val preferredAndroidMarket: String? = null,
+    val otherAndroidMarketUrl: String? = null,
 )
