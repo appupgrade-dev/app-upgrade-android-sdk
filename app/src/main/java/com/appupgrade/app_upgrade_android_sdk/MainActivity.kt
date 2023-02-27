@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.appupgrade.app_upgrade_android_sdk.models.AlertDialogConfig
 import com.appupgrade.app_upgrade_android_sdk.models.AppInfo
+import com.appupgrade.app_upgrade_android_sdk.models.PreferredAndroidMarket
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,12 +14,14 @@ class MainActivity : AppCompatActivity() {
         val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
 
         val appInfo = AppInfo(
-            appId = "com.android.com",
+            appId = "com.android.chrome",
             appName = "Wallpaper app",
             appVersion = "1.0.0",
             platform = "android",
             environment = "production",
-            appLanguage = "en"
+            appLanguage = "en",
+            // preferredAndroidMarket = PreferredAndroidMarket.HUAWEI, // or PreferredAndroidMarket.AMAZON or PreferredAndroidMarket.OTHER If not provided default is Google playstore. Optional
+            // otherAndroidMarketUrl = "https://otherandroidmarketurl.com/app/id" // Required if preferredAndroidMarket is OTHER.
         )
 
         AppUpgrade().checkForUpdates(this, xApiKey, appInfo);

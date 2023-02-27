@@ -2,6 +2,10 @@
 
 All notable changes will be documented in this file.
 
+## [1.0.4] - 2023-02-27
+
+* Add support for Amazon, Huawei and other android marketplaces.
+
 ## [1.0.3] - 2023-02-26
 
 * Fix issue [#1](https://github.com/appupgrade-dev/app-upgrade-android-sdk/issues/1).

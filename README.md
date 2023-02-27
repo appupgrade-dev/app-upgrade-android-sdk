@@ -13,6 +13,12 @@ This SDK communicate with App Upgrade and check the version with store version i
 - If app needs to be updated but not a force update, it will show a dismissable popup.
 - If no action is required it won't do anything.
 
+App Upgrade is a cross platform solution to getting users to easily update your app.
+##### Stores Supported:
+Apple App Store | Google Play Store | Amazon App Store | Huawei AppGallery | Other Android Markets
+--- | --- | --- | --- | ---
+**✓** | **✓** | **✓** | **✓** |  **✓** If your app market place isn't one of these you can pass your own store URL.
+
 ## Installation
 Install via gradle
 
@@ -96,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val appUpgrade = AppUpgrade()
-        appUpgrade.checkForUpdates(this, xApiKey, appInfom alertDialogConfig)
+        appUpgrade.checkForUpdates(this, xApiKey, appInfo, alertDialogConfig)
         
         // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
     }
@@ -145,6 +151,69 @@ public class MainActivity extends AppCompatActivity {
 3. You can find a sample Kotlin app from here [app-upgrade-android-kotlin-demo-app](https://github.com/appupgrade-dev/app_upgrade_android_kotlin_demo_app) and a sample Java app from here [app-upgrade-android-java-demo-app](https://github.com/appupgrade-dev/app_upgrade_android_java_demo_app)
 4. Read detailed blog on how to integrate Kotlin app from here [How to upgrade/force upgrade Android Kotlin app](https://appupgrade.dev/blog/how-to-force-upgrade-android-kotlin-app) and Java app from here [How to upgrade/force upgrade Android Java app](https://appupgrade.dev/blog/how-to-force-upgrade-android-java-app)
 
+### Example with store other than app store or play store.
+If you want users to redirect to store other than playstore. You can add these additional parameters **preferredAndroidMarket** see the example below.
+```kotlin
+class MainActivity : AppCompatActivity() {
+    
+    private lateinit var appUpgrade: AppUpgrade
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // App Upgrade
+        val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
+
+        val appInfo = AppInfo(
+            appId = "com.android.com",
+            appName = "Wallpaper app",
+            appVersion = "1.0.0",
+            platform = "android",
+            environment = "production",
+            appLanguage = "es",
+            preferredAndroidMarket = PreferredAndroidMarket.HUAWEI // or PreferredAndroidMarket.AMAZON or PreferredAndroidMarket.OTHER If not provided default is Google playstore. Optional
+        )
+
+        val appUpgrade = AppUpgrade()
+        appUpgrade.checkForUpdates(this, xApiKey, appInfo)
+        
+        // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
+    }
+}
+```
+
+If you want to redirect user to some other android market place you can use the following example:
+```kotlin
+class MainActivity : AppCompatActivity() {
+    
+    private lateinit var appUpgrade: AppUpgrade
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // App Upgrade
+        val xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"
+
+        val appInfo = AppInfo(
+            appId = "com.android.com",
+            appName = "Wallpaper app",
+            appVersion = "1.0.0",
+            platform = "android",
+            environment = "production",
+            appLanguage = "es",
+            preferredAndroidMarket = PreferredAndroidMarket.HUAWEI, // or PreferredAndroidMarket.AMAZON or PreferredAndroidMarket.OTHER If not provided default is Google playstore. Optional
+            otherAndroidMarketUrl = "https://otherandroidmarketurl.com/app/id" // Required if preferredAndroidMarket is OTHER.
+        )
+
+        val appUpgrade = AppUpgrade()
+        appUpgrade.checkForUpdates(this, xApiKey, appInfo)
+        
+        // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
+    }
+}
+```
 
 ## Screenshot
  ![forceupgrade_android_kotlin](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_android_kotlin.png)
