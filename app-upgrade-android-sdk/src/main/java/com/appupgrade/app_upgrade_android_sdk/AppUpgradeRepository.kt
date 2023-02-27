@@ -199,7 +199,7 @@
                     parentActivity.startActivity(
                         Intent(
                             Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=$appInfo.appId")
+                            Uri.parse("market://details?id=${appInfo.appId}")
                         )
                     )
                 }
@@ -207,7 +207,7 @@
                 parentActivity.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=$appInfo.appId")
+                        Uri.parse("https://play.google.com/store/apps/details?id=${appInfo.appId}")
                     )
                 )
             }
