@@ -183,6 +183,8 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
+- preferredAndroidMarket: PreferredAndroidMarket.AMAZON // or PreferredAndroidMarket.HUAWEI or PreferredAndroidMarket.OTHER If not provided default is Google playstore. If SDK fails to open preferred market place in case marketplace is not available then default Google playstore will be open.
+
 If you want to redirect user to some other android market place you can use the following example:
 ```kotlin
 class MainActivity : AppCompatActivity() {
