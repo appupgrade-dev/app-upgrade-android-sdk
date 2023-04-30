@@ -146,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 ### Note:
-1. For opening the app store or play store the app should be live.
-2. It might not be able to open the app store or play store in simulator. You can try it in physical device.
+1. For opening the play store the app should be live.
+2. It might not be able to open the play store in simulator. You can try it in physical device.
 3. You can find a sample Kotlin app from here [app-upgrade-android-kotlin-demo-app](https://github.com/appupgrade-dev/app_upgrade_android_kotlin_demo_app) and a sample Java app from here [app-upgrade-android-java-demo-app](https://github.com/appupgrade-dev/app_upgrade_android_java_demo_app)
 4. Read detailed blog on how to integrate Kotlin app from here [How to upgrade/force upgrade Android Kotlin app](https://appupgrade.dev/blog/how-to-force-upgrade-android-kotlin-app) and Java app from here [How to upgrade/force upgrade Android Java app](https://appupgrade.dev/blog/how-to-force-upgrade-android-java-app)
 
