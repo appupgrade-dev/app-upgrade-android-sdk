@@ -177,8 +177,6 @@ class MainActivity : AppCompatActivity() {
 
         val appUpgrade = AppUpgrade()
         appUpgrade.checkForUpdates(this, xApiKey, appInfo)
-        
-        // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
     }
 }
 ```
@@ -211,8 +209,6 @@ class MainActivity : AppCompatActivity() {
 
         val appUpgrade = AppUpgrade()
         appUpgrade.checkForUpdates(this, xApiKey, appInfo)
-        
-        // appUpgrade.checkForUpdates(this, xApiKey, appInfom)
     }
 }
 ```
