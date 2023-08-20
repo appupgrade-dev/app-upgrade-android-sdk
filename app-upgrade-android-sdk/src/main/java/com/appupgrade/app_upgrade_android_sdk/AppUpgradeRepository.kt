@@ -42,6 +42,12 @@
                     params["app_language"] = appInfo.appLanguage
                 }
 
+                appInfo.customAttributes?.let { customAttributes ->
+                    for ((key, value) in customAttributes) {
+                        params[key] = value.toString()
+                    }
+                }
+
                 val call = appUpgradeApi.versionCheck(xApiKey, params)
 
                 call.enqueue(object : Callback<AppUpgradeResponse> {

@@ -9,6 +9,7 @@ data class AppInfo(
     val appLanguage: String? = null,
     val preferredAndroidMarket: String? = null,
     val otherAndroidMarketUrl: String? = null,
+    val customAttributes: Map<String, Any>? = null
 ) {
     constructor(
         appId: String,
@@ -16,7 +17,8 @@ data class AppInfo(
         appVersion: String,
         platform: String,
         environment: String,
-    ): this(appId, appName, appVersion, platform, environment, null, null, null)
+        customAttributes: Map<String, Any>? = null
+    ) : this(appId, appName, appVersion, platform, environment, null, null, null, customAttributes)
 
     constructor(
         appId: String,
@@ -25,7 +27,8 @@ data class AppInfo(
         platform: String,
         environment: String,
         appLanguage: String,
-    ): this(appId, appName, appVersion, platform, environment, appLanguage, null, null)
+        customAttributes: Map<String, Any>? = null
+    ) : this(appId, appName, appVersion, platform, environment, appLanguage, null, null, customAttributes)
 
     constructor(
         appId: String,
@@ -35,5 +38,6 @@ data class AppInfo(
         environment: String,
         appLanguage: String,
         preferredAndroidMarket: String?,
-    ): this(appId, appName, appVersion, platform, environment, appLanguage, preferredAndroidMarket, null)
+        customAttributes: Map<String, Any>? = null
+    ) : this(appId, appName, appVersion, platform, environment, appLanguage, preferredAndroidMarket, null, customAttributes)
 }
