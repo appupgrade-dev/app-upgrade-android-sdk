@@ -2,6 +2,10 @@
 
 All notable changes will be documented in this file.
 
+## [1.0.6] - 2024-05-22
+
+* Add instruction for proguard-rule when minifyEnabled is true.
+
 ## [1.0.5] - 2023-08-20
 
 * Add support for custom attributes.
