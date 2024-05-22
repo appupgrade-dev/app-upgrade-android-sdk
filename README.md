@@ -66,6 +66,13 @@ dependencies {
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
+4. If you are using `minifyEnabled true` it may obfuscate the code. Add the following rule in proguard-rules.pro to make sure SDK shows the popup.
+```
+# Keep all classes in the App Upgrade SDK package
+-keep class com.appupgrade.app_upgrade_android_sdk.** { *; }
+
+```
+
 ## How to use it.
 1. Register on App Upgrade and follow the instructions to create project and get the x-api-key.
 2. Use the SDK.
